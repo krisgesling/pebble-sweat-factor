@@ -1,0 +1,6 @@
+build/
+.lock-waf_linux_build
+node_modules/
+
+# Old root-level screenshots superseded by screenshots/ directory
+screenshot_*.png

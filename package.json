@@ -1,0 +1,30 @@
+{
+  "name": "sweat-factor",
+  "author": "Kris Gesling",
+  "version": "1.0.0",
+  "keywords": ["pebble-app"],
+  "private": true,
+  "dependencies": {},
+  "pebble": {
+    "displayName": "Sweat Factor",
+    "uuid": "08988f77-8b68-4f9c-8df5-b6254e97c9da",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": ["emery"],
+    "watchapp": {
+      "watchface": true
+    },
+    "capabilities": ["location", "configurable"],
+    "messageKeys": [
+      "COMFORT_LABEL",
+      "COMFORT_LEVEL",
+      "COMFORT_TEMPS",
+      "RAIN_ETA",
+      "RAIN_URGENT",
+      "REQUEST_WEATHER"
+    ],
+    "resources": {
+      "media": []
+    }
+  }
+}
