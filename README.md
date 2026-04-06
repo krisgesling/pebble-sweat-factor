@@ -8,9 +8,11 @@ Built for the **Pebble Time 2 (emery)**, 200×228 colour display.
 
 ## Screenshots
 
+![Sweat Factor banner](screenshots/sweat-factor_banner_720x320.png)
+
 | No dramas | Sweating | Crikey | Cooked | Overnight rain |
 |-----------|----------|--------|--------|----------------|
-| ![No dramas, all clear](screenshots/sweat-factor_no-dramas_all-clear.png) | ![Sweating, rain tomorrow](screenshots/sweat-factor_sweating_rain-tomorrow.png) ![Crikey, all clear](screenshots/sweat-factor_crikey_all-clear.png) | ![Cooked, raining now](screenshots/sweat-factor_cooked_raining-now.png) | ![Crikey, overnight rain](screenshots/sweat-factor_crikey_overnight-rain.png) |
+| ![No dramas, all clear](screenshots/sweat-factor_no-dramas_all-clear.png) | ![Sweating, rain tomorrow](screenshots/sweat-factor_sweating_rain-tomorrow.png) | ![Crikey, all clear](screenshots/sweat-factor_crikey_all-clear.png) | ![Cooked, raining now](screenshots/sweat-factor_cooked_raining-now.png) | ![Crikey, overnight rain](screenshots/sweat-factor_crikey_overnight-rain.png) |
 
 ---
 
