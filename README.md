@@ -40,13 +40,6 @@ Derived from dew point (°C) — the number that actually measures how humid the
 | 21–24° | Crikey | Amber |
 | 24°+ | Cooked | Orange |
 
-Displayed as two lines — label on top, temperatures below:
-
-```
-      Crikey
-31°C · feels 37°C
-```
-
 All four labels are customisable — tap the settings icon next to Sweat Factor in the Pebble app.
 
 ---
