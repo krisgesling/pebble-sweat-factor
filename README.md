@@ -8,17 +8,18 @@ Built for the **Pebble Time 2 (emery)**, 200×228 colour display.
 
 ## Screenshots
 
-![Sweat Factor banner](screenshots/sweat-factor_banner_720x320.png)
+![Sweat Factor banner](screenshots/v1.2/sweat-factor_banner_720x320.png)
 
 | No dramas | Sweating | Crikey | Cooked |
 |-----------|----------|--------|--------|
-| ![No dramas, all clear](screenshots/sweat-factor_no-dramas_all-clear.png) | ![Sweating, rain tomorrow](screenshots/sweat-factor_sweating_rain-tomorrow.png) | ![Crikey, all clear](screenshots/sweat-factor_crikey_all-clear.png) | ![Cooked, raining now](screenshots/sweat-factor_cooked_raining-now.png) |
+| ![No dramas, all clear](screenshots/v1.2/sweat-factor_no-dramas_all-clear.png) | ![Sweating, rain soon](screenshots/v1.2/sweat-factor_sweating_rain-soon.png) | ![Crikey, rain overnight](screenshots/v1.2/sweat-factor_crikey_rain-overnight.png) | ![Cooked, storm](screenshots/v1.2/sweat-factor_cooked_storm.png) |
 
 ---
 
 ## Features
 
 - **Sweat Factor label** — derived from dew point, not temperature: No dramas / Sweating / Crikey / Cooked
+- **Dew point** — displayed on the banner so you always know the raw number behind the label
 - **Actual and feels-like temperature** — so you know how the air actually feels on your skin
 - **Rain ETA** — scans the next 48 hours and tells you when rain is coming, with day-aware labels: tonight, overnight, tomorrow
 - **Colour-coded at a glance** — Sweat Factor label changes colour by severity; rain line turns orange when it's close

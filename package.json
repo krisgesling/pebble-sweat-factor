@@ -1,7 +1,7 @@
 {
   "name": "sweat-factor",
   "author": "Kris Gesling",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "keywords": ["pebble-app"],
   "private": true,
   "dependencies": {},
@@ -21,7 +21,8 @@
       "COMFORT_TEMPS",
       "RAIN_ETA",
       "RAIN_URGENT",
-      "REQUEST_WEATHER"
+      "REQUEST_WEATHER",
+      "DEW_POINT"
     ],
     "resources": {
       "media": []

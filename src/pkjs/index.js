@@ -8,6 +8,32 @@ var fetchTimer = null;
 
 // ----- Mock location (set to non-null to override GPS for testing) -----
 var MOCK_LOCATION = null;
+// Bangkok = { lat: 13.7563, lon: 100.5018 }
+// Brisbane = { lat: -27.4678, lon: 153.0280 }
+// Cairns =  = { lat: -16.9186, lon: 145.7781 }
+// Singapore = { lat: 1.3521, lon: 103.8198 }
+// Kuala Lumpur = { lat: 3.1390, lon: 101.6869 }
+// Manaus, Brazil = { lat: -3.1190, lon: -60.0217 }
+// HCM City = { lat: 10.8231, lon: 106.6297 }
+// Katherine = { lat: -14.46517, lon: 132.26347 }
+// Denpasar = { lat: -8.65, lon: 115.21667 }
+// Port Moresby = { lat: -9.44314, lon: 147.17972 }
+// Miami = { lat: 25.77427, lon: -80.19366 }
+// var MOCK_LOCATION = { lat: 1.3521, lon: 103.8198 }
+
+// ----- Mock scenarios (set MOCK_SCENARIO to a key below to bypass weather fetch) -----
+var MOCK_SCENARIOS = {
+  // Comfort levels — all clear
+  'no-dramas':      { COMFORT_LABEL: 'No dramas', COMFORT_LEVEL: 0, COMFORT_TEMPS: '24\u00B0C \u00B7 feels 25\u00B0C', RAIN_ETA: 'All clear',          RAIN_URGENT: 0, DEW_POINT: 'dp 15\u00B0' },
+  'sweating':       { COMFORT_LABEL: 'Sweating',  COMFORT_LEVEL: 1, COMFORT_TEMPS: '28\u00B0C \u00B7 feels 30\u00B0C', RAIN_ETA: 'All clear',          RAIN_URGENT: 0, DEW_POINT: 'dp 19\u00B0' },
+  'crikey':         { COMFORT_LABEL: 'Crikey',    COMFORT_LEVEL: 1, COMFORT_TEMPS: '30\u00B0C \u00B7 feels 33\u00B0C', RAIN_ETA: 'All clear',          RAIN_URGENT: 0, DEW_POINT: 'dp 22\u00B0' },
+  'cooked':         { COMFORT_LABEL: 'Cooked',    COMFORT_LEVEL: 2, COMFORT_TEMPS: '33\u00B0C \u00B7 feels 37\u00B0C', RAIN_ETA: 'All clear',          RAIN_URGENT: 0, DEW_POINT: 'dp 26\u00B0' },
+  // Rain scenarios
+  'rain-2pm':       { COMFORT_LABEL: 'Sweating',  COMFORT_LEVEL: 1, COMFORT_TEMPS: '29\u00B0C \u00B7 feels 31\u00B0C', RAIN_ETA: 'Rain ~2:00pm',       RAIN_URGENT: 0, DEW_POINT: 'dp 20\u00B0' },
+  'rain-overnight': { COMFORT_LABEL: 'Crikey',    COMFORT_LEVEL: 1, COMFORT_TEMPS: '31\u00B0C \u00B7 feels 34\u00B0C', RAIN_ETA: 'Overnight ~3:00am',  RAIN_URGENT: 0, DEW_POINT: 'dp 23\u00B0' },
+  'storm':          { COMFORT_LABEL: 'Cooked',    COMFORT_LEVEL: 2, COMFORT_TEMPS: '34\u00B0C \u00B7 feels 38\u00B0C', RAIN_ETA: 'Storm in ~5min',     RAIN_URGENT: 1, DEW_POINT: 'dp 27\u00B0' },
+};
+var MOCK_SCENARIO = null; // e.g. 'crikey' or 'storm' — null to use real weather
 
 // ----- HTTP helper -----
 function xhrRequest(url, callback, errorCallback) {
@@ -319,7 +345,8 @@ function fetchWeather(lat, lon) {
           'COMFORT_LEVEL': comfort.level,
           'COMFORT_TEMPS': comfort.temps,
           'RAIN_ETA':      rain.text,
-          'RAIN_URGENT':   rain.urgent
+          'RAIN_URGENT':   rain.urgent,
+          'DEW_POINT':     'dp ' + Math.round(dewPoint) + '\u00B0'
         },
         function() { console.log('Sweat Factor:data sent to watch'); },
         function(e) { console.log('Sweat Factor:send failed: ' + JSON.stringify(e)); }
@@ -341,6 +368,19 @@ function fetchWeather(lat, lon) {
 
 // ----- Geolocation -----
 function getWeather() {
+  if (MOCK_SCENARIO) {
+    var mock = MOCK_SCENARIOS[MOCK_SCENARIO];
+    if (mock) {
+      console.log('Sweat Factor:using mock scenario "' + MOCK_SCENARIO + '"');
+      Pebble.sendAppMessage(mock,
+        function() { console.log('Sweat Factor:mock data sent'); },
+        function(e) { console.log('Sweat Factor:mock send failed: ' + JSON.stringify(e)); }
+      );
+      return;
+    }
+    console.log('Sweat Factor:unknown mock scenario "' + MOCK_SCENARIO + '", falling through to real weather');
+  }
+
   // Try to get fresh position; fall back to cached coords if geolocation fails
   navigator.geolocation.getCurrentPosition(
     function(pos) {
